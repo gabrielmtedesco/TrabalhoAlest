@@ -43,17 +43,20 @@ public class ListaDupla{
         return false;
     }
 
+    // Percorre do primeiro favorito ao último, preservando a inserção.
     public void exibir(){
         if (inicio == null){
-            System.out.println("Você ainda não adicionou nenhum site aos favoritos.");
+            System.out.println("Nenhum favorito.");
             return;
         }
-
         No atual = inicio;
-
         while (atual != null){
-            System.out.println(atual.valor);
+            System.out.print(atual.valor);
+            if (atual.proximo != null){
+                System.out.print(" -> ");
+            }
             atual = atual.proximo;
         }
+        System.out.println();
     }
 }

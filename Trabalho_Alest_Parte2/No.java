@@ -1,3 +1,4 @@
+// Nó compartilhado pelas estruturas com encadeamento duplo.
 public class No{
     String valor;
     No anterior;

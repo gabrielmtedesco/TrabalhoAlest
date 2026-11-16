@@ -52,6 +52,7 @@ public class Deque{
             fim = null;
         } else{
             inicio = inicio.proximo;
+            // Desliga a referência ao nó que saiu.
             inicio.anterior = null;
         }
 
@@ -71,11 +72,16 @@ public class Deque{
             fim = null;
         } else{
             fim = fim.anterior;
+            // Desliga a referência ao nó que saiu.
             fim.proximo = null;
         }
 
         tamanho--;
         return valorRemovido;
+    }
+
+    public int getTamanho(){
+        return tamanho;
     }
 
     public boolean estaVazio(){
@@ -104,21 +110,21 @@ public class Deque{
         tamanho = 0;
     }
 
+    // As visitas são inseridas no fim; a exibição começa pela mais recente.
     public void exibirHistorico(){
         if (estaVazio()){
-            System.out.println("Nenhum histórico de navegação.");
+            System.out.println("Histórico vazio.");
             return;
         }
-
+        System.out.print("Histórico: ");
         No atual = fim;
-        String resultado = "Histórico de navegação:\n";
-
         while (atual != null){
-            resultado += atual.valor + "\n";
-
+            System.out.print(atual.valor);
+            if (atual.anterior != null){
+                System.out.print(" -> ");
+            }
             atual = atual.anterior;
         }
-
-        System.out.println(resultado);
+        System.out.println();
     }
 }
